@@ -1,24 +1,28 @@
-// Leet Code Questions Solved Using JS as well as time complexities explained
+// #1 Two Sum 
 
-
-//771. Jewels and Stones 
-var numJewelsInStones = function(J, S) {
-    let dict = {}
-    let sum = 0 
-    for (let i = 0; i < S.length; i++) {
-        if (dict[S[i]]) {
-            dict[S[i]] += 1 
-        } else {
-            dict[S[i]] = 1 
-        }
-    }
-    for (let z = 0; z < J.length; z++ ) {
-        if (dict[J[z]]) {
-            sum += dict[J[z]] 
-        }
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) { 
+    let hashMap = {}; 
+        for (let i=0; i < nums.length; i++) {
+                hashMap[nums[i]] = i
+            }
+    for (let i=0; i < nums.length; i++ ) {
+        let numVar = target - nums[i]; 
+        if (hashMap[numVar] && nums.indexOf(numVar) !== i) {
+            return [i, nums.indexOf(numVar)] 
+            }
     }
     
-    return sum 
-    
-};
+    return false 
+}
+
+
+
+
+// #3 longest substring Without Repeating Characters 
+
 
