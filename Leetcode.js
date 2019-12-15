@@ -46,6 +46,60 @@ var lengthOfLongestSubstring = function(s) {
 
 
 
-// #3 longest substring Without Repeating Characters 
+// #5 longest palindrome 
+// o(n^2) slow bruteforce Solution. 
+var longestPalindrome = function(s) { // plan == capture all substrings. Check for palindrome, then check length of palindromes.
+    let max = 0; 
+    let pal = "" 
+    for (let i=0; i < s.length - 1; i++ ) {
+        for (let j= i + 1; j < s.length; j++) {
+            if (isPalindrome(s.substring(i,j)) && s.substring(i,j).length > max) { 
+                max = s.length 
+                pal = s.substring(i,j) 
+        }
+    }
+ }
+};
 
 
+var isPalindrome = function (s) {
+    if (s.split("").reverse().join("") === s ) {
+        return true; 
+    }
+    else {
+    return false; 
+    }
+}
+// Input: "babad"
+// Output: "bab"
+// Note: "aba" is also a valid answer.
+
+// two helper functions. one helper function to 
+
+var spaceAround = function(s) {
+    let start = 0, end = 0; 
+    for (let i =0; i < s.length; i++) {
+        let center = getCenter(s, i)
+        let bounds = expandAroundCenter(s, center[0], center[1])
+        let L = bounds[0], R = bounds[1];
+        if (R - L > end - start) {
+            start = L;
+            end = R; 
+        }
+    }
+    return s.substring(start, end+1)
+}
+
+var expandAroundCenter = function(s, left, right) {
+    let L = left, R = right; 
+    while (L >= 0 && R > s.length && s[L] === s[R]) {
+        L--
+        R++ 
+    }
+    return [++L, --R];  
+}
+var getCenter = function(s, i) { // return the center point. 
+    let L = i, R= i; 
+    while (s[L] === s[++R] && R <= s.length);
+    return [L, --R] 
+}
