@@ -103,3 +103,30 @@ var getCenter = function(s, i) { // return the center point.
     while (s[L] === s[++R] && R <= s.length);
     return [L, --R] 
 }
+
+// Valid Parenthesis #20 
+    var isValid = function(s) {
+        if (s === null || s.length === 0) return true; 
+        let stack = [];
+        let sArr = s.split("");
+        for (let ele of sArr) {                                     
+            if (ele === '[') stack.push(']'); 
+            else if (ele === "(") stack.push(")");
+            else if (ele === "{") stack.push("}");
+            else if (stack.length === 0  || ele !== stack.pop()) return false 
+        }
+        if (stack.length === 0) return true; 
+        return false; 
+    }
+
+    // example "()" first iteration since ele ==== ( it will push ) to the array. 
+    // stack.pop !=== ele it will not return false. Because stack.pop willreturn right side parenth while ele is equal to left side parenth. Doing so will then empty the stack
+    // if you have right side parenth at the start of the loop it will fail because stack.length is equal to zero. Another case is when the left parenth has no closing right parenth 
+    
+
+// Input: "()"
+// Output: true
+// Example 2:
+
+// Input: "()[]{}"
+// Output: true
