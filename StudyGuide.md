@@ -47,3 +47,47 @@ o(n + k )
 
 Arrays And Strings 
 
+Most strings / array type questions follow same protocol in terms of algorithmically solving them. 
+Arrays are resized dynamically in javascript and so are strings. 
+Insertions are generally O(1). Why? because lets say you have an array [1,2,3] and you want to insert a 4 into the array. to insert you would have to copy over existing elements and add the 4. When adding the 4 you are doing computationally, n/3 + (new elemenet). 1/3(n) essentially can be amortized to be equal to less than N and thus just results in o(1) 
+
+Interview Questions. 
+
+## Implement a function to check if all values in a string are unique. You cannot use additional datastructures.
+
+Correct Approach 
+initial approach was to create a hashmap and loop through string but remember you cannot use additional datastructures. 
+1. Step one. Make sure to ask if the string is ASCII or a unicode string. The reason is because ASCII can only encode up to 128 characters whereas unicode is far more. For simplicity sake, if we assume strings are in ASCII format, we can use that to our advantage and automatically return false.
+
+let abc = function(string) => {
+    if (string.length > 128 ) return false; 
+    for (let i=0; i < string.length;, i++) {
+        for (let j=i+1; i < string.length;, i++)
+         if string[i] === string [j] 
+            return false 
+    }
+
+    return true 
+}
+
+you could reduce the runtime of this if you potentially sort the strings and check linearly. 
+
+## Given two strings, write a method to decide if one is a permutiation of the other
+strings are a permutation if they contain the same letters in different order. It is also important to ask if there is case sensitivity and if whitespace is regarded as a character. 
+approach we know is if there is two varying lengths of a string, it should automatically return false.
+
+create a hash map and subtract and add if return Object.values(hash).every( ele => ele > 0 {
+    return false 
+})
+
+## One Away 
+There are three types of edits that can be performed on strings: insert/remove/edit. given two strings write a function to check if they are one edit or zero edits away.
+Example :
+pale, ple -> true
+pales, pale -> true
+pale, bake -> false 
+
+How I would approach this problem in javasript. 
+
+Essentially we know there has to a be a difference of 1 or less between two strings. I would create a hashmap then add a count of 1 to each hash map. Next the second string I would decrement from hashmap. If that key does not exist in the hashmap I would use a secondary variable called counter and add to the counter. Finally I would check the hashmap to see if the sum of the values is greater than one after decrementing. So our final if statement should be if counter <= 1 && Object.values.reduce(acc, ele => { acc += ele}) <= 1 ) return true else return false. 
+
