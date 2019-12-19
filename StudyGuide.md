@@ -37,3 +37,13 @@ Abstract Data types:
 more conceptual and definitions are more conceptual and related to the rules governing their user-facing behaviors rather than their core implementations.
 
 Examples of ADT : stack and queues. 
+
+
+Big O Adding Runtimes verus multiplying. 
+
+If you are adding generally youl be "doing this then after you finish you do that" where as for multiplying runtimes its generally do this for each time you do that. 
+Most important thing to remember. If you are munipulating different arrays for example, then you need to set different variables for the arrays. For example two for loops for two different arrays will not be o(n) 
+o(n + k ) 
+
+Arrays And Strings 
+
