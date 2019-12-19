@@ -87,7 +87,21 @@ pale, ple -> true
 pales, pale -> true
 pale, bake -> false 
 
-How I would approach this problem in javasript. 
+How I would approach this problem in javascript. 
 
 Essentially we know there has to a be a difference of 1 or less between two strings. I would create a hashmap then add a count of 1 to each hash map. Next the second string I would decrement from hashmap. If that key does not exist in the hashmap I would use a secondary variable called counter and add to the counter. Finally I would check the hashmap to see if the sum of the values is greater than one after decrementing. So our final if statement should be if counter <= 1 && Object.values.reduce(acc, ele => { acc += ele}) <= 1 ) return true else return false. 
+
+## string compression 
+implement a method to perform a basic string compressiong using counts of repeated chars 
+ex aabcccccaaa --> a2b1c5a3 
+
+How I would approach this problem in javascript. 
+
+for loop, use a counter to add to counter if i + 1 and i is equal. Then append. 
+
+## Rotate Matrix 
+
+
+
+
 
