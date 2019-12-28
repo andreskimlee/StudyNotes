@@ -101,6 +101,17 @@ for loop, use a counter to add to counter if i + 1 and i is equal. Then append.
 
 ## Rotate Matrix 
 
+given an image of represented by NxN matrix, rotate the image by 90 degress 4 bytes. 
+
+[[a,b][c,d]
+ [e,f][g,h] 
+]
+
+Questions id ask. Is it counter or clockwise
+do you want to mutate original array
+
+My approach : use placeholder variables while iterating over the edges of the matrix and then set them equal to the temp variables.
+
 
 
 
