@@ -112,6 +112,36 @@ do you want to mutate original array
 
 My approach : use placeholder variables while iterating over the edges of the matrix and then set them equal to the temp variables.
 
+Correct approach o(n) time. 
+
+if (matrix.length === 0 || matrix[0].length !== 0] return false (this is for edge cases where matrix is not big enough for rotation or includes empty arrays)
+
+for let (i = 0; i < matrix.length / 2; i++ ) {  we do divide by 2 because we only want to rotate the edges of the matrix
+    let first = i 
+    let last = matrix.length - 1 - i 
+    for (j = first; j < last; j++ ) {
+        let offset = i - first)
+        let top = matrix[first][i]; // save top
+        matrix[first][i] = matrix[last-offset][first];
+        matrix[last-offset][first] = matrix[last][last - offset]; 
+        matrix[last][last - offset] = matrix[i][last]; 
+        matrix[i][last] = top; 
+
+        this will swap all places 
+    }
+  }
+
+Linked List 
+
+Linked lists can be singly linked (Each node pointing to the next node) or the linked list can be point to its previous or next node. The trade off is ultimately the overhead is greater for a doubly linked list vs single since the doubly linked list requires pointers to its prev and next which require more memory. Also when it comes to iteration singly linked lists are terrible in a sense that in order to iterate through all nodes you always have to start at the head. Whereas doubly linked list has a more efficient iteration. (Think reverse iteration because you can start at the tail and move backwards) 
+
+The runner technique 
+iterate through the linked list with two pointers simultaneously with one ahead of the other. This is used also commonly in arrray problems as well. 
+
+
+
+
+
 
 
 
