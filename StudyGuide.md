@@ -138,7 +138,28 @@ Linked lists can be singly linked (Each node pointing to the next node) or the l
 The runner technique 
 iterate through the linked list with two pointers simultaneously with one ahead of the other. This is used also commonly in arrray problems as well. 
 
+Problem 83 
 
+Remove Duplicates from a linkedList 
+
+The Approach: two potential solutions. You want to either use a hashmap to store and check if there are duplicates or while iterating with two pointers you check if the current and next node values are equal to eaech other and if it is you reassign the node pointers. 
+
+var deleteDuplicates = function(head) {
+    let currentNode = head
+    while (currentNode !== null && currentNode.next !== null) {
+            if (currentNode.val === currentNode.next.val) {
+                currentNode.next = currentNode.next.next
+            } else {
+                currentNode = currentNode.next
+            }
+        };
+    return head; 
+    
+};
+
+key point to this is to make sure the while loop conditional which is to make sure that the current node and the currentNode's next node is not null otherwise you will face an error. 
+
+Remove Nth to last node from the list
 
 
 
