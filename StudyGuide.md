@@ -160,10 +160,92 @@ var deleteDuplicates = function(head) {
 key point to this is to make sure the while loop conditional which is to make sure that the current node and the currentNode's next node is not null otherwise you will face an error. 
 
 Remove Nth to last node from the list
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+
+Approch: In order to remove the nth to last node, you have to know the length of the list. In order to do this in one pass, you have to iterate with two pointers at the given n. For example, if you are asked to get the 2nd to last element given a head, your pointers will be 2 nodes apart. That way when you reach the tail, you will know that the pointer is at the correct node. 
+
+1->2->3->4->5, and n = 2.
+
+lets assume pointer A starts at 1 and pointer B starts at 2. we move both pointers one iteration at a time and we know by the time pointer B reaches 5 that the .next value will be null and thus is a tail. Once we know that 5 node is a tail then we know our pointer A will be at 4 and is the 2nd to last. In order to create the proper distance between pointer A and pointer B, we can use a forloop that will iterate until the proper distance is created
+
+Lets code this out;
+
+var removeNthFromEnd = function(head, n) {
+  var left, before, right = head;
+  left = before = {next: head}; 
+  while (n--) right = right.next;
+  while (right) {
+    right = right.next;
+    left = left.next;
+  }
+  left.next = left.next.next;
+  return before.next;
+};
+
+delete medium node from linked list.
+
+if odd number of nodes then you delete the 2nd middle, else odd is middle. 
+
+Linked List - two pointers can be used. First pointer iterates at a pace of 1 while second is twice as fast. Iterate until the last pointers next is null. Return first pointer.
+
+Problem 86 Partition List
+
+Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+
+You should preserve the original relative order of the nodes in each of the two partitions.
+
+Example:
+
+Input: head = 1->4->3->2->5->2, x = 3
+Output: 1->2->2->4->3->5
+
+General Approach. Create two dummy nodes and then sort through which node it will be placed in.
+
+Stacks And Queues
+
+Stacks.
+
+Unlike arrays stacks do not have constant time lookup but they do have constant time add and removal. 
+
+#155 
+
+Implement a stack as well as a min value within the stack 
+
+var MinStack = function() {
+  this.elements = [];
+};
+
+MinStack.prototype.push = function(x) {
+  this.elements.push({
+    value: x,
+    min: this.elements.length === 0 ? x : Math.min(x, this.getMin()),
+  });
+};
+
+when you are pushing into the stack you can make a hashmap that stores value as well as the min value. 
+
+if the length of the stack is 0 then the min is automatically x. Otherwise the min value is the lesser of x or this.getMin() which returns the min of the last element. 
 
 
 
+ @return {void}
+ */
+MinStack.prototype.pop = function() {
+  this.elements.pop();
+};
+/**
 
+ @return {number}
+ */
+MinStack.prototype.top = function() {
+  return this.elements[this.elements.length - 1].value;
+};
+/**
 
-
-
+ @return {number}
+ */
+MinStack.prototype.getMin = function() {
+  return this.elements[this.elements.length - 1].min;
+};
