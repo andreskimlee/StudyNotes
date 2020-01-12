@@ -292,3 +292,9 @@ postOrderTraversal(TreeNode node) {
         visit(node); 
     }
 }
+
+Binary Heaps (min or max heaps) 
+
+essentially heaps are complete binary tree that is totally filled other than the rightmost elements. Recall min or max and heap sort process to sort of trickle up or down. heaps are essentially sorted in a min max order. Min heaps node is the smallest node. While max heap node largest number is node. 
+
+
