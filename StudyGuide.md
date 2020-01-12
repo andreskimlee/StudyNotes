@@ -226,10 +226,6 @@ MinStack.prototype.push = function(x) {
 
 when you are pushing into the stack you can make a hashmap that stores value as well as the min value. 
 
-if the length of the stack is 0 then the min is automatically x. Otherwise the min value is the lesser of x or this.getMin() which returns the min of the last element. 
-
-
-
  @return {void}
  */
 MinStack.prototype.pop = function() {
@@ -249,3 +245,50 @@ MinStack.prototype.top = function() {
 MinStack.prototype.getMin = function() {
   return this.elements[this.elements.length - 1].min;
 };
+
+Most important takeaway from min stack value is that the value if stored in a multivariable hashmap with min val as well as the value, you can keep the min value info consistent. 
+
+return this.elements[this.elements.length - 1].min; // this line returns the last element known min value.
+this  works because even if you pop the stack off, when you added onto the stack it captures the min value anyways. 
+
+Graphs and Trees 
+
+** Do not assume a binary tree is perfect and always ask your interviewer what type of binary tree it is as this can affect the time complexity of the problem.
+
+Complete binary Tree - Every level of the tree is filled except for the last level to the and it is is filled from left to right
+
+Full Binary Trees - Every node has either zero or two children. 
+
+Perfect Binary Tree - All nodes are filled left to right (perfectly symmetrical)
+
+
+
+Binary Tree Traversal types
+
+inOrderTraversal (TreeNode node) {
+    if (node !== null ) { 
+        inOrderTraversal(node.left); // essentailly the recusrive call will dive deep into the stack if the left node exists. And then it will start trickling upwards in asecnding fashion. 
+        visit(node); 
+        inOrderTraversal(node.right);
+    }
+
+   
+}
+
+preOrderTraversal(TreeNode node) {
+    if (node !== null ) {
+        visit(node); 
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
+    }
+}
+
+ visits the node in ascending order. from left to right. 
+
+postOrderTraversal(TreeNode node) {
+    if (node !== null ) {
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
+        visit(node); 
+    }
+}
