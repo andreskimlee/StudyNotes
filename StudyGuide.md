@@ -377,4 +377,48 @@ WordDictionary.prototype.search = function(word) {
 };
 
 
+Graphs 
+
+Graphs are connected tree without cycles. Can be either directed or undirected. (undirected is like a two way street while directed is like a one way street) 
+
+Most common way to represent a graph is through an adjacency list. 
+
+Simple class definition of a graph will look something like this
+
+class Node {
+    constructor() {
+        this.name = "" 
+        this.children = [] 
+    }
+}
+
+class Graph {
+    this.adjList = {}; Key value pairs can be used to store neighboring nodes. For example 1 : 0, 1 etc.  
+}
+
+Graph Search Methods 
+DFS BFS 
+
+function depthFirst(graph) {
+    let visited = new Set(); // to keep a memoization in order to make sure we do not end up in an endless cycle. 
+
+    for (let node in graph) {  // this sort of builds our graph set. 
+        _depthFirstRecur(node, graph, visited);
+    }
+}
+
+function _depthFirstRecur(node, graph, visited) {
+    if (visited.has(node)) return; // if we already visited that node return 
+
+    visited.add(node); // otherwise visit that node. 
+
+    graph[node].forEach(neighbor => {  // and then call iteration on the neighbors for that node 
+        _depthFirstRecur(neighbor, graph, visited); // recursive call to the neighbors. 
+    });
+}
+
+depthFirst(graph);
+
+
+Bit Manipulation
 
